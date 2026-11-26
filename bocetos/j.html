@@ -1,0 +1,241 @@
+<!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Orange Bar · boceto J · Portada diablo</title>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Bowlby+One&family=Creepster&family=Dela+Gothic+One&family=Special+Elite&family=Inter+Tight:wght@500;700;800&family=Josefin+Sans:wght@300&display=swap" rel="stylesheet">
+<style>
+/* paleta por uso:
+   negro  = fondo de todo (Cramps, Rocky)
+   rojo   = neón, focos, títulos japoneses, fondo de las garras, cabezal de historieta
+   crema  = tinta de dibujo y textos sobre negro (Cramps), semitono claro (Rocky)
+   amarillo = detalles chicos: textos japoneses chicos, etiquetas, datos
+   verde flúo = un solo bloque fuerte (agenda, Day of the Dead) y etiquetas del flyer
+   magenta = solo el recuadro de "hoy" dentro del verde */
+:root{--n:#0a0807;--cr:#efe2bf;--r:#e2231a;--y:#f6d23a;--v:#8cff2e;--pk:#ff4fa8;--sal:#ff5a52}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth}
+body{background:var(--n);color:var(--cr);font-family:"Inter Tight",sans-serif;overflow-x:clip}
+.grano{position:fixed;inset:-50%;z-index:50;pointer-events:none;opacity:.12;mix-blend-mode:overlay;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='f'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23f)'/%3E%3C/svg%3E");animation:grano .6s steps(4) infinite}
+.papel{position:relative}.papel:after{content:"";position:absolute;inset:0;pointer-events:none;mix-blend-mode:multiply;opacity:.35;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='f'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.55' numOctaves='4'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -1.4 1.1'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23f)'/%3E%3C/svg%3E")}
+.sl{font-family:"Creepster",cursive;font-weight:400;letter-spacing:.02em}
+.jp{font-family:"Dela Gothic One",sans-serif;font-weight:400}
+.rev{opacity:0;translate:0 36px;transition:opacity .8s,translate .8s cubic-bezier(.2,.8,.2,1)}
+.rev.ve{opacity:1;translate:0 0}
+.etq{filter:url(#aspero);display:inline-block;background:var(--n);color:var(--v);font:400 clamp(17px,1.5vw,22px) "Anton";text-transform:uppercase;letter-spacing:.03em;padding:8px 16px 7px;text-decoration:none;clip-path:polygon(0 4%,100% 0,98% 100%,2% 96%);transition:transform .15s}
+.etq:hover{transform:rotate(-2deg) scale(1.05)}
+/* 1 · portada (igual que G) */
+.antro{position:relative;min-height:100svh;display:grid;grid-template-rows:auto 1fr auto;overflow:hidden;isolation:isolate}
+.antro .foto{position:absolute;inset:0;z-index:-3;background:url(../img/fondo-barra.webp) center 100%/cover;opacity:.22;-webkit-mask:linear-gradient(transparent 66%,#000 92%);mask:linear-gradient(transparent 66%,#000 92%)}
+.foco{position:absolute;z-index:-2;top:-10%;width:60vw;height:120%;background:conic-gradient(from 168deg at 50% 0,transparent,#ff1e0e55 6deg,#ff1e0e22 18deg,transparent 26deg);filter:blur(8px);transform-origin:50% 0;mix-blend-mode:screen}
+.foco.a{left:-14vw;animation:barre 9s ease-in-out infinite alternate}.foco.b{right:-14vw;animation:barre 11s ease-in-out infinite alternate-reverse}
+.antro:after{content:"";position:absolute;inset:0;z-index:-1;background:radial-gradient(70% 60% at 50% 45%,transparent 40%,#000 100%)}
+.top{display:flex;justify-content:space-between;align-items:center;padding:18px clamp(16px,3vw,44px);font:700 12px "Inter Tight";letter-spacing:.14em;text-transform:uppercase}
+.top nav{display:flex;gap:clamp(14px,2.2vw,30px)}.top a{color:var(--cr);text-decoration:none}.top a:hover{color:var(--y)}
+.top .dir{color:var(--y)}
+.vjp{position:absolute;left:clamp(14px,2.4vw,36px);top:50%;translate:0 -50%;writing-mode:vertical-rl;font-size:13px;letter-spacing:.3em;color:var(--y)}
+.vjp.d{left:auto;right:clamp(14px,2.4vw,36px);color:var(--r)}
+.palco{position:relative;display:grid;place-items:center;perspective:1200px;padding:0 12px}
+.diablo{position:absolute;left:50%;top:50%;height:min(118svh,104vw);aspect-ratio:800/1000;translate:-50% -46%;animation:surge 2.6s cubic-bezier(.2,.8,.2,1) .3s both;transition:transform .4s ease-out}
+.diablo .cara{width:100%;height:100%;display:block;filter:brightness(.66) contrast(1.1);-webkit-mask:radial-gradient(60% 58% at 50% 46%,#000 62%,transparent 100%);mask:radial-gradient(60% 58% at 50% 46%,#000 62%,transparent 100%)}
+.brillo{position:absolute;border-radius:50%;background:radial-gradient(closest-side,#b8ff5a,#8cff2e88 45%,transparent);mix-blend-mode:screen;animation:late 2.4s ease-in-out 2.6s infinite;opacity:0}
+.ojo1{left:22%;top:34%;width:20%;height:13%}.ojo2{left:58%;top:34%;width:20%;height:13%}.boca{left:33%;top:64%;width:36%;height:16%;animation-delay:3.4s}
+.neon:before{content:"";position:absolute;inset:-8% -6%;background:radial-gradient(closest-side,#000d,#0008 60%,transparent);z-index:-1}
+.frase{position:absolute;bottom:3svh;left:0;right:0}
+.neon{position:absolute;z-index:2;left:50%;top:5%;translate:-50% 0;width:86%;aspect-ratio:1760/800;transform-style:preserve-3d;transition:transform .25s ease-out}
+.neon img{position:absolute;inset:0;width:100%;height:100%}
+.neon .le{filter:drop-shadow(0 0 2px #ff6040) drop-shadow(0 0 10px #ff2a1a) drop-shadow(0 0 30px #ff1a00);animation:prende 2.4s steps(1) .4s both}
+.neon .ll{filter:url(#fuego) drop-shadow(0 0 3px #ffc23a) drop-shadow(0 0 14px #ff9a00);animation:prende 2.4s steps(1) .9s both}
+.neon .or{filter:drop-shadow(0 0 3px #fff) drop-shadow(0 0 12px #ff3a2a);animation:prende 1.6s steps(1) 1.8s both}
+.neon .re{transform:translateZ(-40px) scale(1.02);filter:blur(14px) brightness(.8);opacity:.6}
+.frase{font:300 clamp(13px,1.6vw,22px) "Josefin Sans";letter-spacing:.24em;text-transform:uppercase;text-align:center;color:#fff;text-shadow:0 0 6px #fff,0 0 18px #ff3a2a;opacity:0;animation:aparece 1s 2.8s forwards}
+.pie-p{display:flex;justify-content:space-between;align-items:end;gap:16px;flex-wrap:wrap;padding:0 clamp(16px,3vw,44px) clamp(22px,4svh,40px)}
+.pie-p p{font:400 13px/1.5 "Special Elite";text-transform:uppercase;color:var(--y)}
+.pie-p .acc{display:flex;gap:10px}
+.pie-p .etq{background:var(--v);color:var(--n)}.pie-p .etq+.etq{background:var(--cr)}
+/* goteo */
+.goteo{position:relative;z-index:3;height:0}
+.goteo svg{position:absolute;left:0;top:-2px;width:100%;height:clamp(60px,8vw,120px);overflow:visible}
+.goteo .gota{transform-box:fill-box;transform-origin:50% 0;animation:gotea var(--t,4s) ease-in-out infinite alternate}
+/* 2 · agenda: Day of the Dead + garras */
+.agenda{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);background:var(--v);color:var(--n)}
+.grilla{position:relative;padding:clamp(80px,9vw,140px) clamp(16px,3vw,44px) clamp(36px,4vw,60px)}
+.sticker{position:absolute;right:clamp(16px,3vw,44px);top:clamp(60px,7vw,110px);width:clamp(110px,13vw,210px);aspect-ratio:3/4;object-fit:cover;rotate:6deg}
+.grilla .pre{font:400 clamp(16px,1.6vw,24px) "Anton";text-transform:uppercase;letter-spacing:.02em}
+.grilla h2{filter:url(#tinta);font:400 clamp(58px,8.4vw,150px)/.84 "Bowlby One";text-transform:uppercase;letter-spacing:-.02em;margin:.06em 0 .12em}
+.grilla .bajada{font:700 clamp(17px,1.7vw,26px) "Inter Tight";letter-spacing:-.01em}
+.filas{list-style:none;padding:0;margin-top:clamp(26px,3vw,44px);border-top:5px solid var(--n)}
+.filas li{position:relative;display:grid;grid-template-columns:3.4em 1fr;align-items:center;gap:12px;padding:12px 0;border-bottom:2px solid var(--n);font:400 clamp(26px,3vw,50px)/1 "Anton";text-transform:uppercase;transition:padding .3s}
+.filas li:hover{padding-left:14px}
+.filas li b{font:400 .62em "Bowlby One"}
+.filas li.hoy{filter:url(#aspero);background:var(--pk);color:var(--v);margin:0 -14px;padding:16px 14px;border:4px solid var(--n);box-shadow:6px 6px 0 var(--n)}
+.filas li.hoy .sl{position:absolute;right:16px;top:50%;translate:0 -50%;rotate:-8deg;font-size:.9em;color:var(--v);text-shadow:2px 2px 0 var(--n)}
+.grilla .pie-g{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-top:22px;font:400 13px "Special Elite";text-transform:uppercase}
+.grilla .pie-g span{border:2px solid var(--n);padding:6px 10px}
+.garras{position:relative;background:var(--r);overflow:hidden}
+.garras img{position:absolute;inset:-4% -2% -4% -8%;width:110%;height:108%;object-fit:cover;object-position:100% 50%;animation:acecha 7s ease-in-out infinite alternate}
+.garras .rot{position:absolute;left:18px;bottom:16px;font:400 13px "Special Elite";color:var(--n);text-transform:uppercase}
+/* 3 · cinta de etiquetas (flyer) */
+.cinta{background:var(--sal);padding:clamp(18px,2.4vw,34px) 0;overflow:hidden;white-space:nowrap}
+.cinta div{display:inline-flex;gap:clamp(12px,1.6vw,22px);animation:corre 30s linear infinite}
+.cinta .etq{font-size:clamp(22px,2.6vw,40px)}
+.cinta .etq:nth-child(odd){rotate:-3deg}.cinta .etq:nth-child(even){rotate:2deg;background:var(--v);color:var(--n)}
+/* 4 · el antro: afiche japonés */
+.antro2{position:relative;padding:clamp(70px,8vw,130px) clamp(16px,3vw,44px) clamp(40px,5vw,70px);overflow:hidden}
+.afiche{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,.65fr);gap:clamp(18px,3vw,50px);align-items:start}
+.semi{position:relative;aspect-ratio:1000/967}
+.semi img{position:absolute;inset:0;width:100%;height:100%;filter:brightness(1.35)}
+.semi .ro{translate:10px 8px;transition:translate 1.2s cubic-bezier(.2,.8,.2,1)}
+.antro2.ve .semi .ro{translate:4px 3px}
+.lado{display:grid;gap:clamp(20px,3vw,40px);align-content:start}
+.oni{width:118%;max-width:none;margin:-10% 0 -6% -22%;filter:drop-shadow(0 20px 30px #000);animation:flota 7s ease-in-out infinite}
+.lado .vt{writing-mode:vertical-rl;font-size:clamp(18px,1.8vw,26px);color:var(--y);letter-spacing:.12em;justify-self:end}
+.lado p{font:500 clamp(15px,1.3vw,18px)/1.55 "Inter Tight";color:var(--y);max-width:28ch}
+.lado .rojo{color:var(--r);font:400 clamp(26px,2.6vw,40px)/1.1 "Dela Gothic One"}
+.titjp{position:relative;margin-top:clamp(20px,2vw,34px)}
+.titjp h2{filter:url(#tinta);font-size:clamp(64px,13vw,230px);line-height:1;color:var(--r);letter-spacing:-.04em;white-space:nowrap}
+.titjp .w{position:relative;display:inline-block}.titjp svg{position:absolute;left:2%;top:84%;width:96%;height:46%;fill:var(--r)}
+.titjp small{display:block;margin-top:clamp(50px,7vw,110px);font:400 clamp(16px,1.6vw,24px) "Anton";letter-spacing:.06em;text-transform:uppercase;color:var(--y)}
+/* 5 · reservar: tapa Cramps */
+.revista{padding:0 clamp(16px,3vw,44px) clamp(60px,7vw,110px)}
+.cab{filter:url(#aspero);display:grid;grid-template-columns:auto 1fr auto;background:var(--r);border:6px solid var(--n);outline:3px solid var(--cr)}
+.vert{background:var(--cr);color:var(--n);padding:6px 10px 8px;font:400 clamp(22px,2.6vw,42px)/.88 "Anton";text-align:center;text-transform:uppercase}
+.vert small{display:block;font:800 10px "Inter Tight";margin-bottom:6px;letter-spacing:.04em}
+.cab .t{padding:10px clamp(14px,2vw,30px) 14px;text-align:center}
+.cab .t small{font:400 clamp(16px,1.6vw,24px) "Anton";text-transform:uppercase;color:var(--cr);letter-spacing:.06em}
+.cab h2{filter:url(#tinta);font-size:clamp(52px,8vw,136px);line-height:.86;color:var(--cr);text-shadow:4px 4px 0 var(--n)}
+.cab .num{align-self:end;padding:0 14px 12px;font:400 clamp(16px,1.5vw,22px) "Anton";color:var(--cr);text-transform:uppercase;text-align:right}
+.tinta{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:clamp(20px,3vw,50px);align-items:center;padding:clamp(24px,3vw,46px) clamp(6px,2vw,30px)}
+.pegada{position:relative;margin:0;rotate:-2.5deg;justify-self:center;max-width:460px;width:100%}.pegada img{display:block;width:100%;border:10px solid var(--cr)}.pegada i{position:absolute;width:110px;height:30px;background:#efe2bfb5}.cinta1{top:-12px;left:12%;rotate:-8deg}.cinta2{bottom:16px;right:8%;rotate:6deg}.pegada figcaption{font:400 12px "Special Elite";color:#8d8473;margin-top:8px;text-transform:uppercase}
+.tinta .calavera{width:100%;max-width:440px;justify-self:center;animation:flota 6s ease-in-out infinite}
+.tinta .ojo{animation:ojo 2.6s ease-in-out infinite}
+.temas{list-style:none;padding:0;display:grid;gap:clamp(12px,1.6vw,22px)}
+.temas a{font:400 clamp(24px,2.6vw,42px)/1 "Anton";text-transform:uppercase;color:var(--cr);text-decoration:none;display:inline-block;transition:color .2s,translate .2s}
+.temas a:hover{color:var(--y);translate:8px 0}
+.temas li:nth-child(odd){rotate:-3deg}.temas li:nth-child(even){rotate:2deg;padding-left:1.4em}
+.grito{font-size:clamp(40px,5vw,84px);line-height:.92;color:var(--r);text-shadow:3px 3px 0 var(--cr);rotate:-6deg;margin:0 0 clamp(14px,2vw,26px)}
+/* pie */
+.puerta{position:relative;height:clamp(300px,40vw,560px);overflow:hidden}.puerta img{width:100%;height:100%;object-fit:cover;object-position:50% 30%;opacity:.75}.puerta:after{content:"";position:absolute;inset:0;background:linear-gradient(#0a0807 0,transparent 30%,transparent 60%,#0a0807)}.puerta p{position:absolute;z-index:1;left:clamp(16px,3vw,44px);bottom:clamp(16px,3vw,40px);font:400 clamp(28px,3.6vw,60px)/1 "Anton";text-transform:uppercase;color:var(--cr)}.puerta p span{display:block;font:400 12px "Special Elite";color:var(--y);margin-top:10px}
+.datos{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid #efe2bf2a}
+.datos div{padding:clamp(20px,2.4vw,34px) clamp(16px,3vw,44px);border-right:1px solid #efe2bf2a}
+.datos dt{font:700 11px "Inter Tight";letter-spacing:.2em;text-transform:uppercase;color:var(--y)}
+.datos dd{font:500 clamp(17px,1.5vw,22px)/1.4 "Inter Tight";margin-top:8px}
+.dock{display:none}
+.nota{position:fixed;right:12px;bottom:12px;z-index:60;background:var(--y);color:var(--n);font:400 13px "Anton";letter-spacing:.04em;padding:5px 10px;text-transform:uppercase}
+@keyframes grano{0%{transform:translate(0,0)}25%{transform:translate(-5%,3%)}50%{transform:translate(4%,-4%)}75%{transform:translate(-3%,-2%)}}
+@keyframes barre{from{rotate:-14deg}to{rotate:12deg}}
+@keyframes prende{0%{opacity:0}10%{opacity:1}14%{opacity:0}22%{opacity:1}26%{opacity:.2}34%{opacity:1}100%{opacity:1}}
+@keyframes aparece{to{opacity:1}}
+@keyframes surge{from{opacity:0;transform:scale(1.12);filter:blur(6px)}to{opacity:1;transform:none;filter:none}}
+@keyframes late{0%,100%{opacity:.25}50%{opacity:1}}
+@keyframes gotea{from{transform:scaleY(.55)}to{transform:scaleY(1.15)}}
+@keyframes corre{to{transform:translateX(-50%)}}
+@keyframes acecha{0%{transform:translateX(6%) scale(1.02)}70%{transform:translateX(-2%) scale(1.05)}72%{transform:translateX(-2.6%) scale(1.05)}74%{transform:translateX(-1.8%) scale(1.05)}100%{transform:translateX(-4%) scale(1.06)}}
+@keyframes flota{0%,100%{transform:translateY(0) rotate(-3deg)}50%{transform:translateY(-14px) rotate(2deg)}}
+@keyframes ojo{0%,100%{opacity:.5}50%{opacity:1}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rev{opacity:1;translate:0}.neon img,.frase{opacity:1}}
+@media (max-width:760px){
+ .top nav,.vjp,.pie-p .acc{display:none}.diablo{height:auto;width:108vw;translate:-50% -52%}
+ .agenda{grid-template-columns:1fr}.garras{order:-1;height:260px}.sticker{display:none}
+ .grilla{position:relative;padding-top:40px}
+ .filas li{grid-template-columns:3em 1fr;font-size:7.4vw}.filas li.hoy .sl{font-size:.8em}
+ .afiche{grid-template-columns:1fr}.oni{width:80%;margin:-30% auto 0;display:block}.oni{width:118%;max-width:none;margin:-10% 0 -6% -22%;filter:drop-shadow(0 20px 30px #000);animation:flota 7s ease-in-out infinite}
+.lado .vt{display:none}
+ .titjp h2{filter:url(#tinta);font-size:17vw}
+ .cab{grid-template-columns:auto 1fr}.cab .num{display:none}
+ .tinta{grid-template-columns:1fr}.pegada{max-width:300px}
+ .datos{grid-template-columns:1fr}.datos div{border-right:0;border-bottom:1px solid #efe2bf2a}
+ .dock{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;position:fixed;z-index:40;left:8px;right:8px;bottom:8px}
+ .dock a{display:grid;place-items:center;height:54px;font:400 18px "Anton";text-transform:uppercase;letter-spacing:.05em;text-decoration:none;color:var(--v);background:var(--n);border:2px solid var(--v)}
+ .dock a:first-child{background:var(--v);color:var(--n)}.dock a:nth-child(2){color:var(--cr);border-color:var(--r);background:var(--r)}
+ body{padding-bottom:70px}.nota{bottom:auto;top:56px}
+}
+</style></head><body>
+<div class="grano"></div>
+<svg width="0" height="0" style="position:absolute">
+ <filter id="fuego"><feTurbulence type="fractalNoise" baseFrequency="0.012 0.05" numOctaves="2" seed="3" result="t"><animate attributeName="baseFrequency" dur="3s" values="0.012 0.05;0.014 0.07;0.012 0.05" repeatCount="indefinite"/></feTurbulence><feDisplacementMap in="SourceGraphic" in2="t" scale="7"/></filter>
+ <filter id="aspero" x="-5%" y="-5%" width="110%" height="110%"><feTurbulence type="fractalNoise" baseFrequency=".045" numOctaves="3" seed="5"/><feDisplacementMap in="SourceGraphic" scale="7"/></filter><filter id="tinta"><feTurbulence type="fractalNoise" baseFrequency=".9" numOctaves="2" seed="2" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="2.2" result="d"/><feGaussianBlur in="d" stdDeviation=".35"/></filter>
+ <symbol id="garra" viewBox="0 0 400 220">
+  <g fill="#0a0807"><path d="M400 96C350 98 300 100 258 102L256 140C300 142 350 146 400 150Z"/><path d="M266 94C238 80 206 84 190 100C178 116 182 140 198 150C220 160 250 154 268 144Z"/>
+   <path d="M124 87Q104 90 96 108Q110 99 122 98Z"/><path d="M108 120Q90 128 86 148Q98 137 110 133Z"/><path d="M122 154Q107 166 108 186Q116 172 127 166Z"/><path d="M152 174Q141 187 145 204Q150 191 159 184Z"/><path d="M190 50Q171 47 160 61Q173 56 188 62Z"/></g>
+  <g fill="none" stroke="#0a0807" stroke-linecap="round" stroke-linejoin="round"><path stroke-width="19" d="M208 102L176 84 146 82 122 92"/><path stroke-width="19" d="M202 114L160 106 128 112 106 126"/><path stroke-width="18" d="M202 128L164 130 136 142 120 160"/><path stroke-width="16" d="M210 140L180 150 160 164 150 180"/><path stroke-width="18" d="M236 94L222 68 204 56 188 56"/></g>
+  <g fill="none" stroke="#e2231a" stroke-width="1.6" opacity=".55"><path d="M300 112c20 2 40 2 70 6M290 128c26 2 50 4 80 8M176 90l-6 6M160 108l-4 7M162 132l-3 7"/></g>
+ </symbol>
+</svg>
+
+<header class="antro">
+ <div class="foco a"></div><div class="foco b"></div>
+ <div class="top"><span class="dir">Pte. Perón 3330 · San Martín</span><nav><a href="#agenda">Agenda</a><a href="#antro">El bar</a><a href="#">Carta</a><a href="#reservar">Reservar</a></nav></div>
+ <span class="vjp jp" aria-hidden="true">オレンジバー・オリジナルスタイル</span><span class="vjp d jp" aria-hidden="true">ロック・ライブ</span>
+ <div class="palco" id="palco">
+  <div class="diablo" id="diablo"><img class="cara" src="../img/r-oni-limpia.png" alt=""><i class="brillo ojo1"></i><i class="brillo ojo2"></i><i class="brillo boca"></i>
+  <div class="neon" id="neon" role="img" aria-label="Orange Bar, original style">
+   <img class="le re" src="../img/v-letras.svg" alt=""><img class="le" src="../img/v-letras.svg" alt=""><img class="ll" src="../img/v-llamas.svg" alt=""><img class="or" src="../img/v-original.svg" alt="">
+  </div></div>
+  <p class="frase">Música ardorosa para gente revoltosa</p>
+ </div>
+ <div class="pie-p"><p>Rock en vivo<br>Music &amp; Food</p><div class="acc"><a class="etq" href="#agenda">Ver la agenda</a><a class="etq" href="#reservar">Reservar mesa</a></div></div>
+</header>
+
+<div class="goteo" aria-hidden="true"><svg viewBox="0 0 1000 120" preserveAspectRatio="none"><rect y="-4" width="1000" height="12" fill="#0a0807"/>
+ <g fill="#0a0807"><path class="gota" style="--t:3.4s" d="M60 6c0 30 6 60 12 60s12-30 12-60z"/><path class="gota" style="--t:4.6s" d="M200 6c0 50 8 92 16 92s16-42 16-92z"/><path class="gota" style="--t:3.9s" d="M350 6c0 22 5 40 10 40s10-18 10-40z"/><path class="gota" style="--t:5.2s" d="M470 6c0 60 9 104 18 104s18-44 18-104z"/><path class="gota" style="--t:3.6s" d="M640 6c0 34 6 62 12 62s12-28 12-62z"/><path class="gota" style="--t:4.4s" d="M780 6c0 46 7 80 14 80s14-34 14-80z"/><path class="gota" style="--t:3.2s" d="M920 6c0 20 5 36 10 36s10-16 10-36z"/></g></svg></div>
+
+<section class="agenda papel" id="agenda">
+ <div class="grilla">
+  <img class="sticker roto" src="../img/r-jason.webp" alt=""><p class="pre rev">Orange Bar presenta</p>
+  <h2 class="rev">Esta<br>semana</h2>
+  <p class="bajada rev">rock en vivo, tributos y fiestas en Pte. Perón 3330</p>
+  <ol class="filas">
+   <li class="rev"><b>Mié</b><span>De chicas</span></li>
+   <li class="rev hoy"><b>Jue</b><span>Rock en vivo</span><span class="sl">¡hoy!</span></li>
+   <li class="rev"><b>Vie</b><span>Fiesta agite</span></li>
+   <li class="rev"><b>Sáb</b><span>[Banda] + DJ</span></li>
+   <li class="rev"><b>Dom</b><span>Jam rock &amp; blues</span></li>
+  </ol>
+  <div class="pie-g"><span>La grilla completa, en el Instagram</span><span>@orangebarsanmartin</span></div>
+ </div>
+ <div class="garras roto" aria-hidden="true"><img src="../img/r-garras.webp" alt=""><span class="rot">[ foto de referencia ]</span></div>
+</section>
+
+<div class="cinta" aria-hidden="true"><div>
+ <span class="etq">Música ardorosa</span><span class="etq">para gente revoltosa</span><span class="etq">Rock en vivo</span><span class="etq">Jueves</span><span class="etq">Pte. Perón 3330</span><span class="etq">Original style</span>
+ <span class="etq">Música ardorosa</span><span class="etq">para gente revoltosa</span><span class="etq">Rock en vivo</span><span class="etq">Jueves</span><span class="etq">Pte. Perón 3330</span><span class="etq">Original style</span>
+</div></div>
+
+<section class="antro2" id="antro">
+ <div class="afiche">
+  <div class="semi rev roto"><img class="ro" src="../img/semi-rojo.png" alt=""><img src="../img/semi-crema.png" alt="El cartel de neón y la barra del Orange Bar"></div>
+  <div class="lado"><span class="vt jp" aria-hidden="true">ロック・ライブ毎週木曜日</span><p class="rojo rev">Luz roja,<br>neón y ruido.</p><p class="rev">Bandas en vivo, tributos y fiestas en Pte. Perón 3330.</p></div>
+ </div>
+ <div class="titjp rev"><div class="w"><h2 class="jp" lang="ja">オレンジバー</h2>
+  <svg viewBox="0 0 1000 80" preserveAspectRatio="none" aria-hidden="true"><path d="M40 0c0 30 5 54 10 54s10-24 10-54zM150 0c0 46 7 76 14 76s14-30 14-76zM300 0c0 20 4 34 8 34s8-14 8-34zM430 0c0 38 6 64 12 64s12-26 12-64zM560 0c0 26 5 44 10 44s10-18 10-44zM700 0c0 50 8 78 16 78s16-28 16-78zM850 0c0 30 5 50 10 50s10-20 10-50z"/></svg></div>
+  <small>Orange Bar · Original style · Music &amp; Food</small></div>
+</section>
+
+<section class="revista" id="reservar">
+ <div class="cab"><div class="vert"><small>Rock n roll</small>J<br>U<br>E<br>V<br>E<br>S</div>
+  <div class="t"><small>Cuentos del Orange</small><h2 class="sl">Reservá tu mesa</h2></div><div class="num">Nº 3330<br>San Martín</div></div>
+ <div class="tinta">
+  <figure class="pegada roto"><img src="../img/r-fantasma.webp" alt=""><i class="cinta1"></i><i class="cinta2"></i><figcaption>[ foto de referencia ]</figcaption></figure>
+  <div>
+   <p class="grito sl rev">¡Te guardamos lugar para el show!</p>
+   <ul class="temas">
+    <li class="rev"><a href="#">WhatsApp [número]</a></li>
+    <li class="rev"><a href="#">La carta</a></li>
+    <li class="rev"><a href="#">Instagram</a></li>
+    <li class="rev"><a href="#llegar">Cómo llegar</a></li>
+   </ul>
+  </div>
+ </div>
+</section>
+
+<div class="puerta"><img src="../img/r-puerta.webp" alt=""><p>La puerta, un jueves a la noche<span>[ foto de referencia: sacar una así en el bar ]</span></p></div>
+<dl class="datos" id="llegar"><div><dt>Dónde</dt><dd>Av. Presidente Perón 3330<br>San Martín</dd></div><div><dt>Cuándo</dt><dd>Rock en vivo los jueves<br>Horarios [a confirmar]</dd></div><div><dt>Seguinos</dt><dd>@orangebarsanmartin</dd></div></dl>
+
+<nav class="dock"><a href="#agenda">Agenda</a><a href="#reservar">Reservar</a><a href="#llegar">Llegar</a></nav>
+<div class="nota">Boceto J · Portada diablo</div>
+<script>
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add("ve");io.unobserve(e.target)}}),{threshold:.15});
+document.querySelectorAll(".rev,.antro2").forEach(el=>{const l=el.closest("ol,ul");if(l)el.style.transitionDelay=[...l.children].indexOf(el)*.09+"s";io.observe(el)});
+document.querySelectorAll(".roto").forEach(el=>{const p=[],k=28,j=()=>(Math.random()*1.6).toFixed(2);for(let i=0;i<=k;i++)p.push((i/k*100)+"% "+j()+"%");for(let i=0;i<=k;i++)p.push((100-j())+"% "+(i/k*100)+"%");for(let i=k;i>=0;i--)p.push((i/k*100)+"% "+(100-j())+"%");for(let i=k;i>=0;i--)p.push(j()+"% "+(i/k*100)+"%");el.style.clipPath="polygon("+p.join(",")+")"});
+const n=document.getElementById("neon");
+if(matchMedia("(hover:hover)").matches)addEventListener("pointermove",e=>{const x=e.clientX/innerWidth-.5,y=e.clientY/innerHeight-.5;n.style.transform=`rotateY(${x*14}deg) rotateX(${-y*10}deg)`;document.getElementById("diablo").style.transform=`translate(${-x*24}px,${-y*16}px)`});
+</script>
+</body></html>

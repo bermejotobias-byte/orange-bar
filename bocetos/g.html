@@ -1,0 +1,189 @@
+<!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Orange Bar · boceto G · Verde fluo</title>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Creepster&family=Special+Elite&family=Inter+Tight:wght@500;700;800&family=Josefin+Sans:wght@300&display=swap" rel="stylesheet">
+<style>
+:root{--n:#050505;--v:#8bff1f;--vv:#c8ff7a;--r:#ff2a1a;--b:#f2f2ee}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth}
+body{background:var(--n);color:var(--b);font-family:"Inter Tight",sans-serif;overflow-x:clip}
+.grano{position:fixed;inset:-50%;z-index:50;pointer-events:none;opacity:.13;mix-blend-mode:overlay;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='f'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23f)'/%3E%3C/svg%3E");animation:grano .6s steps(4) infinite}
+.gasta{-webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='f'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.7' numOctaves='3'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -7 5.4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23f)'/%3E%3C/svg%3E")}
+.sl{font-family:"Creepster",cursive;font-weight:400;letter-spacing:.02em}
+.rev{opacity:0;translate:0 40px;transition:opacity .8s,translate .8s cubic-bezier(.2,.8,.2,1)}
+.rev.ve{opacity:1;translate:0 0}
+/* 1 · portada: antro con focos rojos */
+.antro{position:relative;min-height:100svh;display:grid;grid-template-rows:auto 1fr auto;overflow:hidden;isolation:isolate}
+.antro .foto{position:absolute;inset:0;z-index:-3;background:url(../img/fondo-barra.webp) center 100%/cover;opacity:.22;-webkit-mask:linear-gradient(transparent 66%,#000 92%);mask:linear-gradient(transparent 66%,#000 92%)}
+.foco{position:absolute;z-index:-2;top:-10%;width:60vw;height:120%;background:conic-gradient(from 168deg at 50% 0,transparent,#ff1e0e55 6deg,#ff1e0e22 18deg,transparent 26deg);filter:blur(8px);transform-origin:50% 0;mix-blend-mode:screen}
+.foco.a{left:-14vw;animation:barre 9s ease-in-out infinite alternate}
+.foco.b{right:-14vw;animation:barre 11s ease-in-out infinite alternate-reverse}
+.antro:after{content:"";position:absolute;inset:0;z-index:-1;background:radial-gradient(70% 60% at 50% 45%,transparent 40%,#000 100%)}
+.top{display:flex;justify-content:space-between;align-items:center;padding:18px clamp(16px,3vw,44px);font:700 12px "Inter Tight";letter-spacing:.14em;text-transform:uppercase}
+.top nav{display:flex;gap:clamp(14px,2.2vw,30px)}
+.top a{color:#bdb8ae;text-decoration:none;transition:color .2s}.top a:hover{color:var(--v)}
+.top .dir{color:var(--v)}
+.palco{display:grid;place-items:center;align-content:center;gap:clamp(16px,3svh,34px);perspective:1200px;padding:0 12px}
+.neon{position:relative;width:min(860px,88vw);aspect-ratio:1760/800;transform-style:preserve-3d;transition:transform .25s ease-out}
+.neon img{position:absolute;inset:0;width:100%;height:100%}
+.neon .le{filter:drop-shadow(0 0 2px #ff6040) drop-shadow(0 0 10px #ff2a1a) drop-shadow(0 0 30px #ff1a00);animation:prende 2.4s steps(1) .4s both}
+.neon .ll{filter:url(#fuego) drop-shadow(0 0 3px #ffc23a) drop-shadow(0 0 14px #ff9a00);animation:prende 2.4s steps(1) .9s both,llama 2.8s ease-in-out 3.3s infinite}
+.neon .or{filter:drop-shadow(0 0 3px #fff) drop-shadow(0 0 12px #ff3a2a);animation:prende 1.6s steps(1) 1.8s both}
+.neon .re{transform:translateZ(-40px) scale(1.02);filter:blur(14px) brightness(.8);opacity:.6}
+.frase{font:300 clamp(13px,1.6vw,22px) "Josefin Sans";letter-spacing:.24em;text-transform:uppercase;text-align:center;color:#fff;text-shadow:0 0 6px #fff,0 0 18px var(--v);opacity:0;animation:aparece 1s 2.8s forwards}
+.pie-p{display:flex;justify-content:space-between;align-items:end;gap:16px;flex-wrap:wrap;padding:0 clamp(16px,3vw,44px) clamp(22px,4svh,40px)}
+.pie-p p{font:400 13px/1.5 "Special Elite";text-transform:uppercase;color:#a9a39a}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:52px;padding:0 24px;font:400 19px "Anton";text-transform:uppercase;letter-spacing:.06em;text-decoration:none;color:var(--n);background:var(--v);margin:0 6px 6px 0;transition:transform .15s,box-shadow .15s;box-shadow:0 0 0 #8bff1f}
+.btn:hover{transform:translate(-3px,-3px);box-shadow:5px 5px 0 var(--b)}
+.btn.o{background:none;color:var(--b);border:2px solid var(--b)}
+.baja{font:700 11px "Inter Tight";letter-spacing:.2em;text-transform:uppercase;color:#7d786f;display:flex;flex-direction:column;align-items:center;gap:8px}
+.baja:after{content:"";width:1px;height:34px;background:linear-gradient(var(--v),transparent);animation:baja 1.6s infinite}
+/* goteo verde entre pantallas */
+.goteo{position:relative;z-index:3;height:0}
+.goteo svg{position:absolute;left:0;top:-2px;width:100%;height:clamp(70px,9vw,140px);overflow:visible}
+.goteo .gota{transform-box:fill-box;transform-origin:50% 0;animation:gotea var(--t,4s) ease-in-out infinite alternate}
+.cinta{background:var(--v);color:var(--n);overflow:hidden;white-space:nowrap;padding:clamp(10px,1.2vw,16px) 0 clamp(26px,3vw,40px)}
+.cinta div{display:inline-block;animation:corre 28s linear infinite;font-size:clamp(28px,3.4vw,54px)}
+.cinta span{margin:0 .5em}
+/* 2 · agenda */
+.agenda{position:relative;padding:clamp(90px,11vw,170px) clamp(16px,3vw,44px) clamp(70px,8vw,130px);overflow:hidden}
+.agenda h2{font-size:clamp(40px,5vw,84px);color:var(--v);line-height:1}
+.agenda .sub{font:400 14px "Special Elite";color:#8c867d;text-transform:uppercase;margin:12px 0 clamp(26px,3.4vw,50px)}
+.filas{list-style:none;padding:0;position:relative;z-index:2}
+.filas li{display:grid;grid-template-columns:2.4em 1fr;align-items:baseline;font:400 clamp(40px,7.6vw,138px)/.92 "Anton";text-transform:uppercase;color:var(--v);border-top:1px solid #8bff1f33;cursor:default;transition:color .2s,padding .3s}
+.filas li:hover{color:var(--b);padding-left:.15em}
+.filas li.hoy{color:var(--b);text-shadow:0 0 34px #8bff1f99}
+.filas small{font-size:.24em;vertical-align:super;margin-left:.3em;font-family:"Special Elite";color:var(--v)}
+.rev.fila{translate:-60px 0}.rev.fila.ve{translate:0 0}
+.calavera{position:absolute;z-index:1;right:-7vw;top:10%;width:min(520px,42vw);animation:flota 6s ease-in-out infinite;pointer-events:none;opacity:.95}
+.calavera .ojo{animation:ojo 3s ease-in-out infinite}
+/* 3 · el antro (foto duotono) */
+.foto-grande{position:relative;background:var(--v);overflow:hidden}
+.foto-grande img{display:block;width:100%;height:clamp(420px,62vw,860px);object-fit:cover;mix-blend-mode:multiply;filter:invert(1) contrast(1.3);transform:scale(1.15);transition:transform 1.4s cubic-bezier(.2,.8,.2,1)}
+.foto-grande.ve img{transform:scale(1)}
+.foto-grande h2{position:absolute;left:clamp(12px,2vw,30px);right:clamp(12px,2vw,30px);top:clamp(10px,2vw,26px);font:400 clamp(72px,16vw,280px)/.82 "Anton";text-transform:uppercase;color:var(--n);letter-spacing:-.01em}
+.foto-grande p{position:absolute;right:clamp(12px,2vw,30px);top:clamp(14px,2.2vw,32px);text-align:right;font:800 clamp(12px,1.1vw,16px)/1.25 "Inter Tight";text-transform:uppercase;color:var(--n)}
+.cuadros{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(10px,1.6vw,24px);padding:clamp(12px,1.6vw,24px);background:var(--n)}
+.cuadro{position:relative;background:var(--v);border:3px solid var(--v);overflow:hidden}
+.cuadro img,.cuadro .vacio{display:block;width:100%;aspect-ratio:1;object-fit:cover;mix-blend-mode:multiply;filter:invert(1) contrast(1.2)}
+.cuadro.r{background:var(--r);border-color:var(--r)}
+.cuadro .vacio{display:grid;place-items:center;font:400 13px "Special Elite";text-transform:uppercase;color:var(--n);mix-blend-mode:normal;background:repeating-linear-gradient(45deg,#0000 0 10px,#0002 10px 20px)}
+.cuadro span{position:absolute;left:10px;bottom:8px;font:400 clamp(18px,1.8vw,28px) "Anton";text-transform:uppercase;color:var(--n)}
+/* 4 · reservar */
+.reservar{position:relative;min-height:92svh;display:grid;align-content:center;padding:clamp(100px,11vw,170px) clamp(16px,3vw,44px) clamp(200px,22vw,300px);overflow:hidden;background:radial-gradient(50% 40% at 50% 100%,#8bff1f22,transparent 70%)}
+.reservar h2{font-size:clamp(64px,11vw,190px);line-height:.86;color:var(--v);max-width:10ch}
+.reservar p{font:400 clamp(16px,1.4vw,20px)/1.6 "Inter Tight";color:#bdb8ae;max-width:40ch;margin:22px 0 28px}
+.mano{position:absolute;bottom:-8px;width:clamp(110px,13vw,200px);translate:0 100%;transition:translate 1.6s cubic-bezier(.3,1.3,.5,1)}
+.mano.a{right:clamp(40px,14vw,260px)}.mano.b{right:clamp(150px,27vw,480px);width:clamp(90px,10vw,160px);rotate:-10deg;transition-delay:.35s}
+.reservar.ve .mano{translate:0 0}
+.datos{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid #ffffff22}
+.datos div{padding:clamp(20px,2.4vw,34px) clamp(16px,3vw,44px);border-right:1px solid #ffffff22}
+.datos dt{font:700 11px "Inter Tight";letter-spacing:.2em;text-transform:uppercase;color:var(--v)}
+.datos dd{font:500 clamp(17px,1.5vw,22px)/1.4 "Inter Tight";margin-top:8px}
+.firma{display:flex;justify-content:space-between;padding:16px clamp(16px,3vw,44px);font:400 12px "Special Elite";color:#6f6a62;text-transform:uppercase;border-top:1px solid #ffffff22}
+.dock{display:none}
+.nota{position:fixed;right:12px;bottom:12px;z-index:60;background:var(--v);color:var(--n);font:400 13px "Anton";letter-spacing:.04em;padding:5px 10px;text-transform:uppercase}
+@keyframes grano{0%{transform:translate(0,0)}25%{transform:translate(-5%,3%)}50%{transform:translate(4%,-4%)}75%{transform:translate(-3%,-2%)}}
+@keyframes barre{from{rotate:-14deg}to{rotate:12deg}}
+@keyframes prende{0%{opacity:0}10%{opacity:1}14%{opacity:0}22%{opacity:1}26%{opacity:.2}34%{opacity:1}100%{opacity:1}}
+@keyframes llama{0%,100%{opacity:1}50%{opacity:.82}}
+@keyframes aparece{to{opacity:1}}
+@keyframes baja{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}51%{transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
+@keyframes gotea{from{transform:scaleY(.55)}to{transform:scaleY(1.15)}}
+@keyframes corre{to{transform:translateX(-50%)}}
+@keyframes flota{0%,100%{transform:translateY(0) rotate(-4deg)}50%{transform:translateY(-18px) rotate(2deg)}}
+@keyframes ojo{0%,100%{opacity:.6}50%{opacity:1}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rev{opacity:1;translate:0}.neon img,.frase{opacity:1}}
+@media (max-width:760px){
+ .top nav{display:none}
+ .pie-p .acc{display:none}
+ .calavera{width:28vw;right:3vw;top:64px}.agenda .sub{max-width:58%}
+ .filas li{font-size:11vw}
+ .cuadros{grid-template-columns:1fr 1fr}.cuadros .cuadro:last-child{grid-column:1/-1}.cuadros .cuadro:last-child img{aspect-ratio:2/1}
+ .foto-grande p{display:none}
+ .datos{grid-template-columns:1fr}.datos div{border-right:0;border-bottom:1px solid #ffffff22}
+ .mano.a{right:6vw;width:30vw}.mano.b{right:40vw;width:24vw}
+ .dock{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;position:fixed;z-index:40;left:8px;right:8px;bottom:8px}
+ .dock a{display:grid;place-items:center;height:54px;font:400 18px "Anton";text-transform:uppercase;letter-spacing:.05em;text-decoration:none;color:var(--b);background:#0b0b0bee;border:1.5px solid #ffffff33}
+ .dock a:first-child{background:var(--v);color:var(--n);border-color:var(--v)}
+ body{padding-bottom:70px}.nota{bottom:auto;top:56px}
+}
+</style></head><body>
+<div class="grano"></div>
+<svg width="0" height="0" style="position:absolute"><filter id="fuego"><feTurbulence type="fractalNoise" baseFrequency="0.012 0.05" numOctaves="2" seed="3" result="t"><animate attributeName="baseFrequency" dur="3s" values="0.012 0.05;0.014 0.07;0.012 0.05" repeatCount="indefinite"/></feTurbulence><feDisplacementMap in="SourceGraphic" in2="t" scale="7"/></filter></svg>
+
+<header class="antro">
+ <div class="foto"></div><div class="foco a"></div><div class="foco b"></div>
+ <div class="top"><span class="dir">Pte. Perón 3330 · San Martín</span><nav><a href="#agenda">Agenda</a><a href="#antro">El bar</a><a href="#">Carta</a><a href="#reservar">Reservar</a></nav></div>
+ <div class="palco">
+  <div class="neon" id="neon" role="img" aria-label="Orange Bar, original style">
+   <img class="le re" src="../img/neon-letras.png" alt=""><img class="le" src="../img/neon-letras.png" alt=""><img class="ll" src="../img/neon-llamas.png" alt=""><img class="or" src="../img/neon-original.png" alt="">
+  </div>
+  <p class="frase">Música ardorosa para gente revoltosa</p>
+ </div>
+ <div class="pie-p"><p>Rock en vivo<br>Music &amp; Food</p><span class="baja">Bajá</span><div class="acc"><a class="btn" href="#agenda">Agenda</a><a class="btn o" href="#reservar">Reservar</a></div></div>
+</header>
+
+<div class="goteo" aria-hidden="true"><svg viewBox="0 0 1000 120" preserveAspectRatio="none"><rect width="1000" height="10" fill="#8bff1f"/>
+ <g fill="#8bff1f"><path class="gota" style="--t:3.4s" d="M60 8c0 30 6 60 12 60s12-30 12-60z"/><path class="gota" style="--t:4.6s" d="M170 8c0 50 8 92 16 92s16-42 16-92z"/><path class="gota" style="--t:3.9s" d="M300 8c0 22 5 40 10 40s10-18 10-40z"/><path class="gota" style="--t:5.2s" d="M410 8c0 60 9 104 18 104s18-44 18-104z"/><path class="gota" style="--t:3.6s" d="M560 8c0 34 6 62 12 62s12-28 12-62z"/><path class="gota" style="--t:4.4s" d="M690 8c0 46 7 80 14 80s14-34 14-80z"/><path class="gota" style="--t:3.2s" d="M820 8c0 20 5 36 10 36s10-16 10-36z"/><path class="gota" style="--t:4.9s" d="M915 8c0 54 8 96 16 96s16-42 16-96z"/></g></svg></div>
+
+<section class="agenda" id="agenda">
+ <svg class="calavera" viewBox="0 0 200 250" aria-hidden="true">
+  <g stroke="#050505" stroke-width="3" stroke-linejoin="round">
+   <path fill="#8bff1f" d="M100 10C45 10 18 50 20 100c1 28 12 40 20 50l2 22c2 10 12 14 20 14h76c8 0 18-4 20-14l2-22c8-10 19-22 20-50 2-50-25-90-80-90z"/>
+   <path fill="#8bff1f" d="M48 176c0 30 22 52 52 52s52-22 52-52z"/>
+   <path fill="#050505" d="M48 98c2-18 22-22 36-14 8 8 4 32-10 36-16 4-28-6-26-22zM152 98c-2-18-22-22-36-14-8 8-4 32 10 36 16 4 28-6 26-22zM100 122l-10 24q10 4 20 0z"/>
+   <path fill="#050505" d="M56 168h88v28H56z"/>
+   <g fill="#8bff1f"><path d="M60 168h10v14H60zM72 168h10v16H72zM84 168h10v15H84zM96 168h10v17H96zM108 168h10v15h-10zM120 168h10v16h-10zM132 168h9v13h-9zM62 196v-10h10v10zM74 196v-12h10v12zM86 196v-11h10v11zM98 196v-12h10v12zM110 196v-11h10v11zM122 196v-12h10v12z"/></g>
+   <path fill="none" d="M100 12l-6 20 8 10-4 18M150 40l-14 12 4 14M36 62c8 4 14 12 14 22M164 70c-8 2-12 10-12 18"/>
+   <path fill="none" stroke-width="2" d="M30 110c6 10 10 22 10 34M170 110c-6 10-10 22-10 34M60 30c-10 8-18 18-22 30M140 30c10 8 18 18 22 30"/>
+   <path fill="#8bff1f" d="M66 220c0 10 3 22 6 22s6-12 6-22zM112 224c0 8 3 18 6 18s6-10 6-18zM92 226c0 6 2 14 5 14s5-8 5-14z"/>
+  </g>
+  <circle class="ojo" cx="68" cy="102" r="5" fill="#ff2a1a" style="filter:drop-shadow(0 0 6px #ff2a1a)"/><circle class="ojo" cx="132" cy="102" r="5" fill="#ff2a1a" style="filter:drop-shadow(0 0 6px #ff2a1a)"/>
+ </svg>
+ <h2 class="sl rev">Esta semana</h2>
+ <p class="sub rev">La grilla completa sale cada semana en el Instagram</p>
+ <ol class="filas gasta">
+  <li class="rev fila"><span>Mié</span><span>De chicas</span></li>
+  <li class="rev fila hoy"><span>Jue</span><span>Rock en vivo<small>hoy</small></span></li>
+  <li class="rev fila"><span>Vie</span><span>Fiesta agite</span></li>
+  <li class="rev fila"><span>Sáb</span><span>[Banda] + DJ</span></li>
+  <li class="rev fila"><span>Dom</span><span>Jam rock &amp; blues</span></li>
+ </ol>
+</section>
+
+<div class="cinta sl" aria-hidden="true"><div><span>Música ardorosa para gente revoltosa</span>✝<span>Rock en vivo</span>✝<span>Original style</span>✝<span>Música ardorosa para gente revoltosa</span>✝<span>Rock en vivo</span>✝<span>Original style</span>✝</div></div>
+
+<section id="antro">
+ <div class="foto-grande rev"><img src="../img/bn-barra.webp" alt="La barra del Orange Bar"><h2>El antro</h2><p>Luz roja, neón<br>y ruido</p></div>
+ <div class="cuadros">
+  <div class="cuadro rev"><img src="../img/bn-llamas.webp" alt=""><span>El cartel</span></div>
+  <div class="cuadro r rev"><div class="vacio">[ foto de banda en vivo ]</div><span>Jueves</span></div>
+  <div class="cuadro rev"><img src="../img/bn-botellas.webp" alt=""><span>La barra</span></div>
+ </div>
+</section>
+
+<div class="goteo" aria-hidden="true"><svg viewBox="0 0 1000 120" preserveAspectRatio="none"><rect width="1000" height="10" fill="#050505"/>
+ <g fill="#050505"><path class="gota" style="--t:4s" d="M110 8c0 40 7 72 14 72s14-32 14-72z"/><path class="gota" style="--t:3.3s" d="M330 8c0 24 5 44 10 44s10-20 10-44z"/><path class="gota" style="--t:5s" d="M520 8c0 56 9 98 18 98s18-42 18-98z"/><path class="gota" style="--t:3.7s" d="M760 8c0 30 6 56 12 56s12-26 12-56z"/></g></svg></div>
+
+<section class="reservar" id="reservar">
+ <h2 class="sl rev">Reservá tu mesa</h2>
+ <p class="rev">Escribinos por WhatsApp y te guardamos lugar para el show. Mirá la carta antes de venir.</p>
+ <div class="rev"><a class="btn" href="#">WhatsApp [número]</a><a class="btn o" href="#">La carta</a><a class="btn o" href="#">Instagram</a></div>
+ <svg class="mano a" viewBox="0 0 120 260" aria-hidden="true"><path fill="#8bff1f" stroke="#050505" stroke-width="3" stroke-linejoin="round" d="M40 262l4-92c-14-10-22-30-18-50L14 70c-2-8 8-12 12-4l14 46-2-72c0-10 12-10 12 0l4 64 6-78c1-10 13-9 12 2l-2 76 12-66c2-10 14-8 12 2l-10 72 16-28c4-8 14-4 10 4l-18 52c-2 16-8 26-14 32l2 90z"/><path fill="none" stroke="#050505" stroke-width="2.5" d="M44 120c4 4 10 6 16 4M58 92l2 8M70 90l-2 8M50 200l14-4M48 226l18 2M84 130c-6 6-14 8-20 6"/><path fill="#050505" d="M40 150c6 4 6 12 0 16zM70 160c4 6 2 14-4 16z"/></svg>
+ <svg class="mano b" viewBox="0 0 120 260" aria-hidden="true" style="transform:scaleX(-1)"><path fill="#8bff1f" stroke="#050505" stroke-width="3" stroke-linejoin="round" d="M40 262l4-92c-14-10-22-30-18-50L14 70c-2-8 8-12 12-4l14 46-2-72c0-10 12-10 12 0l4 64 6-78c1-10 13-9 12 2l-2 76 12-66c2-10 14-8 12 2l-10 72 16-28c4-8 14-4 10 4l-18 52c-2 16-8 26-14 32l2 90z"/><path fill="none" stroke="#050505" stroke-width="2.5" d="M44 120c4 4 10 6 16 4M50 200l14-4M84 130c-6 6-14 8-20 6"/></svg>
+</section>
+
+<dl class="datos" id="llegar"><div><dt>Dónde</dt><dd>Av. Presidente Perón 3330<br>San Martín</dd></div><div><dt>Cuándo</dt><dd>Rock en vivo los jueves<br>Horarios [a confirmar]</dd></div><div><dt>Seguinos</dt><dd>@orangebarsanmartin</dd></div></dl>
+<div class="firma"><span>Orange Bar · Original style</span><span>Music &amp; Food</span></div>
+
+<nav class="dock"><a href="#agenda">Agenda</a><a href="#reservar">Reservar</a><a href="#llegar">Llegar</a></nav>
+<div class="nota">Boceto G · Negro + verde fluo</div>
+<script>
+// aparece al entrar en pantalla
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add("ve");io.unobserve(e.target)}}),{threshold:.15});
+document.querySelectorAll(".rev,.reservar").forEach((el,i)=>{if(el.classList.contains("fila"))el.style.transitionDelay=(el.parentNode.children.length&&[...el.parentNode.children].indexOf(el)*.09)+"s";io.observe(el)});
+// el cartel sigue al mouse
+const n=document.getElementById("neon");
+if(matchMedia("(hover:hover)").matches)addEventListener("pointermove",e=>{const x=e.clientX/innerWidth-.5,y=e.clientY/innerHeight-.5;n.style.transform=`rotateY(${x*14}deg) rotateX(${-y*10}deg)`});
+</script>
+</body></html>

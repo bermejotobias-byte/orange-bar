@@ -1,0 +1,151 @@
+<!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Orange Bar · boceto E · Focos rojos</title>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter+Tight:wght@500;700;800&family=Special+Elite&family=Press+Start+2P&family=Yellowtail&display=swap" rel="stylesheet">
+<style>
+:root{--n:#050404;--r:#d8140b;--rr:#ff2a1a;--b:#f5f2ec;--papel:#e9e5da;--glow:0 0 3px #fff,0 0 10px #fff,0 0 24px #ff2a1a,0 0 46px #ff2a1a}
+*{box-sizing:border-box;margin:0}
+body{background:var(--n);color:var(--b);font-family:"Inter Tight",sans-serif;overflow-x:clip}
+.vhs{position:fixed;inset:0;z-index:50;pointer-events:none;background:repeating-linear-gradient(#0000 0 2px,#0000002e 2px 3px);mix-blend-mode:multiply}
+.grano{position:fixed;inset:0;z-index:51;pointer-events:none;opacity:.14;mix-blend-mode:overlay;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='f'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23f)'/%3E%3C/svg%3E")}
+.cor{font:500 13px "Inter Tight";letter-spacing:.06em;text-transform:uppercase}
+h2{font:800 clamp(38px,5vw,84px)/.95 "Inter Tight";text-transform:uppercase;letter-spacing:-.02em}
+/* 1 · el cartel en el centro */
+.portada{position:relative;min-height:100svh;display:grid;grid-template-rows:auto auto 1fr auto;justify-items:center;overflow:hidden;background:radial-gradient(40% 50% at 50% 0,#5a0c0855,transparent 70%),radial-gradient(70% 40% at 50% 62%,#2a0705,transparent 70%),var(--n)}
+nav{display:flex;gap:clamp(14px,2.4vw,34px);padding:22px 16px 0;color:#bdb6ad}
+nav a{color:inherit;text-decoration:none}
+.lema{margin-top:clamp(22px,5svh,56px);font:800 clamp(26px,3.2vw,52px)/1 "Inter Tight";text-transform:uppercase;letter-spacing:-.01em;text-align:center;padding:0 16px}
+.palco{position:relative;width:100%;display:grid;place-items:center;perspective:1100px}
+.fondo{position:absolute;left:50%;top:50%;translate:-50% -50%;white-space:nowrap;font:400 clamp(130px,25vw,420px)/.8 "Anton";color:transparent;-webkit-text-stroke:2px var(--r);letter-spacing:-.01em;text-transform:uppercase;opacity:.75}
+.logo{position:relative;width:min(900px,80vw);aspect-ratio:749/338;transform-style:preserve-3d;animation:gira 9s ease-in-out infinite alternate}
+.logo img{position:absolute;inset:0;width:100%;height:100%}
+.capa{filter:brightness(.3) saturate(1.3)}
+.trozo{filter:drop-shadow(0 0 5px #ff3b1f) drop-shadow(0 0 18px #ff2a00aa);animation:rompe 1.5s cubic-bezier(.2,.9,.2,1) .5s both,titila 7s 2.2s infinite}
+.t1{clip-path:polygon(0 0,27% 0,24% 38%,29% 61%,22% 100%,0 100%);--x:-16px;--y:6px;--z:30px;--r:-4deg}
+.t2{clip-path:polygon(27% 0,52% 0,47% 44%,55% 70%,49% 100%,22% 100%,29% 61%,24% 38%);--x:-4px;--y:-9px;--z:60px;--r:2deg}
+.t3{clip-path:polygon(52% 0,78% 0,73% 35%,80% 58%,75% 100%,49% 100%,55% 70%,47% 44%);--x:8px;--y:10px;--z:45px;--r:-2deg}
+.t4{clip-path:polygon(78% 0,100% 0,100% 100%,75% 100%,80% 58%,73% 35%);--x:18px;--y:-4px;--z:25px;--r:5deg}
+.grieta{position:absolute;inset:-4% 0;width:100%;height:108%;transform:translateZ(60px);animation:aparece .3s .7s both}
+.grieta path{fill:none;stroke:#fff;stroke-width:2;filter:drop-shadow(0 0 3px #fff) drop-shadow(0 0 8px #ff4a2a)}
+.lado{position:absolute;right:clamp(16px,3vw,44px);top:50%;translate:0 -50%;display:grid;gap:18px}
+.lado a{width:22px;height:22px;border:1.5px solid #bdb6ad;border-radius:50%;display:block}
+.firma{position:absolute;left:clamp(16px,3vw,44px);top:50%;color:#9b948b}
+.pie{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;padding:0 16px clamp(26px,5svh,52px)}
+.pill{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:0 24px;border-radius:99px;font:700 14px "Inter Tight";text-transform:uppercase;letter-spacing:.04em;text-decoration:none;color:var(--b);background:#1c1a19;border:1px solid #ffffff1c}
+.pill.r{background:var(--r);border-color:var(--r)}
+/* 2 · paneles rojos */
+.noches{position:relative;padding:clamp(56px,7vw,110px) clamp(16px,4vw,64px) 0}
+.cab{display:flex;justify-content:space-between;align-items:start;gap:20px}
+.cab aside{text-align:right;color:var(--rr);font-size:14px;line-height:1.3;max-width:17ch}
+.cab aside b{display:block;color:var(--b);font-weight:700;margin-bottom:clamp(40px,5vw,80px)}
+.sala{display:grid;grid-template-columns:repeat(5,1fr);gap:clamp(10px,2vw,30px);margin-top:clamp(36px,5vw,70px);-webkit-box-reflect:below 0 linear-gradient(#0000 40%,#0007)}
+.panel{position:relative;aspect-ratio:9/16;background:radial-gradient(90% 40% at 50% 0,#ff4a32,transparent 75%),linear-gradient(#e0170c,#b80d06);overflow:hidden;cursor:pointer;transition:filter .3s}
+.panel:nth-child(odd){translate:0 -14px}
+.panel .txt{position:absolute;inset:clamp(14px,1.6vw,24px) 10px auto;text-align:center;color:#ff6a55;transition:color .3s}
+.panel .txt b{display:block;font:800 clamp(15px,1.4vw,20px) "Inter Tight";text-transform:uppercase}
+.panel .txt span{display:block;font:500 clamp(12px,1vw,14px)/1.3 "Inter Tight";margin-top:6px}
+.panel.on .txt,.panel:hover .txt{color:#fff}
+.panel svg{position:absolute;left:0;right:0;bottom:0;width:100%;height:62%}
+.panel svg *{fill:#050303;stroke:#050303}
+.piso{height:clamp(120px,14vw,220px)}
+/* 3 · carteles */
+.carteles{position:relative;padding:clamp(40px,6vw,90px) clamp(16px,4vw,64px) clamp(56px,7vw,110px);background:radial-gradient(40% 50% at 20% 30%,#4a0a0655,transparent),radial-gradient(40% 50% at 80% 70%,#4a0a0655,transparent)}
+.pared{display:grid;grid-template-columns:1.1fr 1fr 1fr;grid-template-rows:auto auto;gap:clamp(16px,2.4vw,34px);margin-top:clamp(30px,4vw,56px)}
+.c{position:relative;border:1px solid #ffffff14;background:#0b0909;min-height:240px;display:grid;place-items:center;overflow:hidden}
+.c small{position:absolute;left:12px;bottom:10px;color:#776f66;font:500 11px "Inter Tight";letter-spacing:.08em;text-transform:uppercase}
+.pulso{grid-row:span 2;background:#000}
+.pulso svg{width:62%;overflow:visible}
+.pulso path{fill:#000;stroke:#fff;stroke-width:1.1;filter:drop-shadow(0 0 2px #fff) drop-shadow(0 0 6px #ff3b2a)}
+.arcade{font:400 clamp(18px,2.2vw,32px) "Press Start 2P";color:#fff;text-shadow:var(--glow);letter-spacing:.04em}
+.frase{font:400 clamp(38px,4.4vw,70px) "Yellowtail";color:#fff;text-shadow:var(--glow);rotate:-6deg}
+.flyer{background:var(--papel);color:var(--n);padding:14px;rotate:2deg;box-shadow:8px 10px 0 #000}
+.flyer .tit{display:flex;gap:3px}.flyer .tit i{font:400 clamp(20px,2vw,30px)/1 "Anton";font-style:normal;background:var(--r);color:var(--b);padding:2px 5px;text-transform:uppercase}
+.flyer img{width:100%;aspect-ratio:4/3;object-fit:cover;display:block;margin:8px 0;filter:contrast(1.3)}
+.flyer p{font:400 14px "Special Elite";text-transform:uppercase}
+.rec{background:#000}
+.rec img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:grayscale(1) contrast(1.3) brightness(.7) sepia(1) hue-rotate(-50deg) saturate(4)}
+.rec .osd{position:absolute;inset:12px 14px;display:flex;flex-direction:column;justify-content:space-between;font:400 clamp(14px,1.3vw,18px) "Special Elite";color:#fff;text-shadow:0 0 4px #000;text-transform:uppercase}
+.rec .osd b{color:var(--rr);font-weight:400}
+/* 4 · reservar */
+.final{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,4vw,64px);align-items:end;padding:clamp(56px,7vw,110px) clamp(16px,4vw,64px);border-top:1px solid #ffffff14}
+.final p{color:#bdb6ad;line-height:1.6;margin:18px 0 26px;max-width:36ch;font-size:clamp(16px,1.3vw,19px)}
+.mapa{min-height:300px;background:#120d0c;border:1px solid #ffffff1c;display:grid;place-items:center;color:#776f66;position:relative}
+.mapa:after{content:"● Pte. Perón 3330";position:absolute;left:50%;top:48%;translate:-50% -50%;color:#fff;font:700 14px "Inter Tight";text-shadow:var(--glow)}
+.dock{display:none}
+.nota{position:fixed;left:12px;bottom:12px;z-index:60;background:var(--r);color:#fff;font:700 12px "Inter Tight";padding:6px 10px;text-transform:uppercase}
+@keyframes gira{from{transform:rotateX(10deg) rotateY(-13deg)}to{transform:rotateX(5deg) rotateY(10deg)}}
+@keyframes rompe{from{transform:none}to{transform:translate3d(var(--x),var(--y),var(--z)) rotate(var(--r))}}
+@keyframes titila{0%,90%,100%{opacity:1}91%{opacity:.25}92%{opacity:1}95%{opacity:.5}}
+@keyframes aparece{from{opacity:0}to{opacity:1}}
+@media (max-width:760px){
+ nav a:nth-child(n+4){display:none}.firma,.lado{display:none}
+ .logo{width:90vw}.fondo{font-size:34vw}
+ .cab aside{display:none}
+ .sala{grid-template-columns:repeat(5,62vw);overflow-x:auto;scroll-snap-type:x mandatory;margin-right:-16px;padding-right:16px;-webkit-box-reflect:none}.sala{grid-auto-rows:110vw}.panel{scroll-snap-align:start;aspect-ratio:auto}.portada .pie{display:none}.panel:nth-child(odd){translate:none}.piso{height:62vw}
+ .pared,.final{grid-template-columns:1fr}.pulso{grid-row:auto}
+ .dock{display:grid;grid-template-columns:repeat(3,1fr);position:fixed;z-index:40;left:10px;right:10px;bottom:10px;gap:6px}
+ .dock a{display:grid;place-items:center;height:52px;border-radius:99px;font:700 14px "Inter Tight";text-transform:uppercase;color:#fff;text-decoration:none;background:#1c1a19ee;border:1px solid #ffffff22}
+ .dock a:first-child{background:var(--r)}
+ body{padding-bottom:74px}.nota{bottom:auto;top:60px}
+}
+</style></head><body>
+<div class="vhs"></div><div class="grano"></div>
+
+<header class="portada">
+ <nav class="cor"><a href="#noches">Agenda</a><a href="#carteles">El bar</a><a href="#">Carta</a><a href="#reservar">Reservar</a><a href="#llegar">Cómo llegar</a></nav>
+ <h1 class="lema">Rock en vivo. Todos los jueves.</h1>
+ <div class="palco">
+  <div class="fondo" aria-hidden="true">En vivo</div>
+  <div class="logo" role="img" aria-label="Orange Bar">
+   <img class="capa" src="../img/logo-neon.webp" alt="" style="transform:translateZ(-30px)"><img class="capa" src="../img/logo-neon.webp" alt="" style="transform:translateZ(-20px)"><img class="capa" src="../img/logo-neon.webp" alt="" style="transform:translateZ(-10px)">
+   <img class="trozo t1" src="../img/logo-neon.webp" alt=""><img class="trozo t2" src="../img/logo-neon.webp" alt=""><img class="trozo t3" src="../img/logo-neon.webp" alt=""><img class="trozo t4" src="../img/logo-neon.webp" alt="">
+   <svg class="grieta" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M27 0 L24 38 L29 61 L22 100" vector-effect="non-scaling-stroke"/><path d="M52 0 L47 44 L55 70 L49 100" vector-effect="non-scaling-stroke"/><path d="M78 0 L73 35 L80 58 L75 100" vector-effect="non-scaling-stroke"/></svg>
+  </div>
+  <span class="firma cor">San Martín</span>
+  <div class="lado"><a href="#" aria-label="Instagram"></a><a href="#" aria-label="WhatsApp"></a><a href="#" aria-label="Mapa"></a></div>
+ </div>
+ <div class="pie"><a class="pill r" href="#noches">Ver la agenda</a><a class="pill" href="#reservar">Reservar mesa</a></div>
+</header>
+
+<section class="noches" id="noches">
+ <div class="cab"><h2>Cada noche<br>suena distinto</h2><aside><b>[ Agenda ]</b>Bandas, tributos y fiestas. Tocá una noche.</aside></div>
+ <div class="sala">
+  <div class="panel"><div class="txt"><b>Miércoles</b><span>Miércoles de chicas</span></div>
+   <svg viewBox="0 0 100 160" preserveAspectRatio="xMidYMax meet"><circle cx="50" cy="40" r="10"/><path d="M38 54Q50 49 62 54L66 108H60L58 160H52L50 116 48 160H42L40 108H34Z"/><path d="M60 58L74 30 78 32 66 62Z"/><path d="M40 58 30 92 35 94 45 64Z"/><line x1="76" y1="24" x2="76" y2="160" stroke-width="1.5"/></svg></div>
+  <div class="panel on"><div class="txt"><b>Jueves</b><span>Rock en vivo · [banda]</span></div>
+   <svg viewBox="0 0 100 160" preserveAspectRatio="xMidYMax meet"><circle cx="46" cy="38" r="10"/><path d="M34 52Q46 47 58 52L62 106H56L54 160H48L46 114 44 160H38L36 106H30Z"/><ellipse cx="50" cy="96" rx="15" ry="11" transform="rotate(-25 50 96)"/><path d="M58 88 92 62 94 65 60 92Z"/><path d="M36 58 46 94 52 90 42 56Z"/><path d="M58 58 70 80 66 84 54 62Z"/></svg></div>
+  <div class="panel"><div class="txt"><b>Viernes</b><span>Fiesta Agite · [tributo]</span></div>
+   <svg viewBox="0 0 100 160" preserveAspectRatio="xMidYMax meet"><circle cx="50" cy="66" r="9"/><path d="M39 78Q50 74 61 78L64 118H36Z"/><ellipse cx="50" cy="132" rx="20" ry="14"/><ellipse cx="22" cy="112" rx="13" ry="9"/><ellipse cx="78" cy="112" rx="13" ry="9"/><ellipse cx="14" cy="82" rx="15" ry="3"/><ellipse cx="86" cy="76" rx="15" ry="3"/><line x1="14" y1="82" x2="14" y2="160" stroke-width="1.5"/><line x1="86" y1="76" x2="86" y2="160" stroke-width="1.5"/><path d="M40 82 24 104 27 106 44 86Z"/><path d="M60 82 76 102 73 104 56 86Z"/></svg></div>
+  <div class="panel"><div class="txt"><b>Sábado</b><span>[banda] + DJ</span></div>
+   <svg viewBox="0 0 100 160" preserveAspectRatio="xMidYMax meet"><circle cx="54" cy="40" r="10"/><path d="M42 54Q54 49 66 54L70 108H64L62 160H56L54 116 52 160H46L44 108H38Z"/><ellipse cx="46" cy="98" rx="14" ry="10" transform="rotate(20 46 98)"/><path d="M40 92 8 66 6 69 38 96Z"/><path d="M44 58 30 84 34 86 48 62Z"/></svg></div>
+  <div class="panel"><div class="txt"><b>Domingo</b><span>Jam rock &amp; blues</span></div>
+   <svg viewBox="0 0 100 160" preserveAspectRatio="xMidYMax meet"><circle cx="20" cy="104" r="9"/><circle cx="50" cy="98" r="10"/><circle cx="80" cy="106" r="9"/><path d="M4 120Q20 114 36 120V160H4Z"/><path d="M33 114Q50 108 67 114V160H33Z"/><path d="M64 122Q80 116 96 122V160H64Z"/><path d="M44 106 38 62 42 60 48 102Z"/><path d="M36 60h3v-8h2v8h2v-6h2v8l-2 4h-6z"/><path d="M72 112 84 74 88 76 78 114Z"/></svg></div>
+ </div>
+ <div class="piso"></div>
+</section>
+
+<section class="carteles" id="carteles">
+ <div class="cab"><h2>Luz roja,<br>neón y ruido</h2><aside><b>[ El bar ]</b>Focos rojos, carteles de neón y la barra.</aside></div>
+ <div class="pared">
+  <div class="c pulso"><svg id="pulso" viewBox="0 0 200 230"></svg><small>[ foto: cartel de líneas ]</small></div>
+  <div class="c"><span class="arcade">ARCADE</span><small>[ foto: cartel arcade ]</small></div>
+  <div class="c rec"><img src="../img/xerox-barra.webp" alt=""><div class="osd"><span><b>● REC</b> &nbsp;SP</span><span>Pte. Perón 3330<br>Jue 23:00</span></div></div>
+  <div class="c"><span class="frase">Rock en vivo</span><small>[ foto: cartel con frase ]</small></div>
+  <div class="c" style="background:none;border:0"><div class="flyer"><div class="tit"><i>O</i><i>r</i><i>a</i><i>n</i><i>g</i><i>e</i></div><img src="../img/xerox-barra.webp" alt=""><p>Rock en vivo · San Martín</p></div></div>
+ </div>
+</section>
+
+<section class="final" id="reservar">
+ <div><h2>Reservá<br>tu mesa</h2><p>Escribinos por WhatsApp para reservar. Music &amp; Food, rock en vivo, Pte. Perón 3330.</p>
+  <a class="pill r" href="#">WhatsApp [número]</a> <a class="pill" href="#">La carta</a> <a class="pill" href="#">Instagram</a></div>
+ <div class="mapa" id="llegar">[ mapa oscuro ]</div>
+</section>
+
+<nav class="dock"><a href="#noches">Agenda</a><a href="#reservar">Reservar</a><a href="#llegar">Llegar</a></nav>
+<div class="nota">Boceto E · Focos rojos</div>
+<script>
+// líneas de pulso propias (no la tapa del disco): 34 crestas con ruido
+const s=document.getElementById("pulso");let h="";
+for(let i=0;i<34;i++){const y=20+i*6;let d="M0 "+y;for(let x=0;x<=200;x+=4){const c=Math.exp(-((x-100)**2)/900);const n=(Math.sin(x*.31+i*1.7)+Math.sin(x*.17+i*.9)*.8+Math.sin(x*.7+i*3.1)*.4);d+=" L"+x+" "+(y-c*(8+Math.abs(n)*10)-Math.max(0,n)*c*6).toFixed(1)}h+='<path d="'+d+' L200 240 L0 240Z"/>'}
+s.innerHTML=h;
+</script>
+</body></html>

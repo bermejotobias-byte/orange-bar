@@ -1,0 +1,50 @@
+<!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Orange Bar · boceto B · Neón</title>
+<link href="https://fonts.googleapis.com/css2?family=Bungee&family=Bungee+Hairline&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{--n:#0a0607;--r:#ff3b1f;--a:#ffc83a;--t:#2fd3c3;--p:#f3e9dc}
+*{box-sizing:border-box;margin:0}
+body{background:var(--n);color:var(--p);font-family:"Space Mono",monospace;overflow-x:clip}
+.barra{position:relative;min-height:100svh;display:grid;place-items:center;padding:60px 16px 0;background:radial-gradient(60% 45% at 50% 40%,#3a0d0a,transparent 70%),linear-gradient(#0a0607 60%,#1a0c08)}
+.cartel{text-align:center}
+.neon{font-family:"Bungee";font-size:clamp(58px,13vw,230px);line-height:.9;color:#ffd9cf;letter-spacing:-.01em;text-shadow:0 0 4px #fff,0 0 12px var(--r),0 0 28px var(--r),0 0 60px var(--r),0 0 110px #ff2a00;animation:tiembla 6s infinite}
+.llama{font-family:"Bungee Hairline";font-size:clamp(20px,3vw,48px);color:#fff4c9;letter-spacing:.3em;text-shadow:0 0 6px var(--a),0 0 18px var(--a),0 0 40px #ff9a00;margin-bottom:.4em}
+.reflejo{transform:scaleY(-1);opacity:.22;filter:blur(3px);-webkit-mask:linear-gradient(transparent 30%,#000);mask:linear-gradient(transparent 30%,#000);margin-top:-.05em}
+.mostrador{position:absolute;left:0;right:0;bottom:0;height:34%;background:linear-gradient(#2b1208,#120805);border-top:1px solid #6a2a12}
+.mostrador:before{content:"";position:absolute;inset:0;background:radial-gradient(50% 30% at 50% 0,#ff3b1f55,transparent)}
+.sub{position:relative;z-index:2;display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:28px}
+.btn{font:700 14px "Space Mono";text-transform:uppercase;letter-spacing:.08em;color:var(--p);text-decoration:none;padding:15px 20px;border:1px solid #ffffff44;background:#ffffff0d;backdrop-filter:blur(6px)}
+.btn.r{border-color:var(--r);color:#fff;box-shadow:0 0 18px #ff3b1f88,inset 0 0 12px #ff3b1f55}
+.marquesina{padding:clamp(48px,7vw,110px) clamp(16px,5vw,80px)}
+.tablero{background:#111;border:10px solid #1f1f1f;box-shadow:0 0 0 2px #333,0 30px 80px #000;padding:clamp(16px,3vw,40px);background-image:repeating-linear-gradient(#0000 0 46px,#ffffff10 46px 48px)}
+.tablero h2{font-family:"Bungee";font-weight:400;color:var(--a);font-size:clamp(22px,3vw,44px);text-shadow:0 0 14px #ffc83a88;margin-bottom:12px}
+.fila{display:flex;flex-wrap:wrap;gap:4px 18px;font:700 clamp(18px,2.4vw,36px)/48px "Space Mono";text-transform:uppercase;color:#f1f1f1;letter-spacing:.06em}
+.fila b{color:var(--r);font-weight:700;min-width:5.6em}
+.dos{display:grid;grid-template-columns:1fr 1fr;gap:clamp(16px,3vw,40px);padding:0 clamp(16px,5vw,80px) clamp(48px,6vw,96px)}
+.caja{border:1px solid #ffffff22;padding:clamp(20px,2.6vw,36px);background:linear-gradient(160deg,#1b0d0b,#0d0708)}
+.caja h3{font-family:"Bungee";font-weight:400;font-size:clamp(26px,2.8vw,42px);color:#fff;text-shadow:0 0 10px var(--r)}
+.caja p{line-height:1.7;margin-top:12px;color:#d9cfc5}
+.mapa{margin-top:16px;height:200px;background:#160c0b;border:1px dashed #ffffff33;display:grid;place-items:center;color:#8a7c74}
+.nota{position:fixed;left:12px;bottom:12px;background:var(--r);color:#fff;font:700 12px "Space Mono";padding:6px 10px;text-transform:uppercase}
+@keyframes tiembla{0%,93%,100%{opacity:1}94%{opacity:.4}95%{opacity:1}97%{opacity:.6}}
+@media (max-width:700px){.dos{grid-template-columns:1fr}.fila b{min-width:100%}.fila{line-height:36px;margin-bottom:10px}.tablero{background-image:none}}
+</style></head><body>
+<header class="barra"><div class="cartel">
+ <div class="llama">— rock en vivo —</div>
+ <div class="neon">ORANGE<br>BAR</div>
+ <div class="neon reflejo" aria-hidden="true">ORANGE<br>BAR</div>
+ <div class="sub"><a class="btn r" href="#">Agenda de la semana</a><a class="btn" href="#">Reservar</a><a class="btn" href="#">Carta</a></div>
+</div><div class="mostrador"></div></header>
+<section class="marquesina"><div class="tablero"><h2>Esta semana en el escenario</h2>
+ <div class="fila"><b>Miércoles</b><span>Miércoles de chicas</span></div>
+ <div class="fila"><b>Jueves</b><span>Rock en vivo · [banda]</span></div>
+ <div class="fila"><b>Viernes</b><span>Fiesta Agite · [tributo]</span></div>
+ <div class="fila"><b>Sábado</b><span>[banda] + DJ</span></div>
+ <div class="fila"><b>Domingo</b><span>Jam Rock &amp; Blues</span></div>
+</div></section>
+<section class="dos">
+ <div class="caja"><h3>Music &amp; Food</h3><p>[foto de la barra con el neón]<br>Carta completa en el link. Entrada libre en muchas fechas: mirá cada show.</p></div>
+ <div class="caja"><h3>Pte. Perón 3330</h3><p>San Martín, Buenos Aires · Horarios [a confirmar]</p><div class="mapa">[ mapa nocturno ]</div></div>
+</section>
+<div class="nota">Boceto B · Neón en la barra</div>
+</body></html>

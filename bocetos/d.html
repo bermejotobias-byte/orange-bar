@@ -1,0 +1,137 @@
+<!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Orange Bar · boceto D · Punk en papel</title>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Special+Elite&family=Permanent+Marker&family=Pirata+One&display=swap" rel="stylesheet">
+<style>
+:root{--n:#080707;--r:#e1261c;--b:#f4f1ea;--papel:#ece8dd;--glow:0 0 4px #fff,0 0 12px #fff,0 0 26px #ff2a1a}
+*{box-sizing:border-box;margin:0}
+body{background:var(--n);color:var(--b);font-family:"Special Elite",monospace;overflow-x:clip}
+.grano{position:fixed;inset:0;z-index:50;pointer-events:none;opacity:.18;mix-blend-mode:overlay;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='f'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23f)'/%3E%3C/svg%3E")}
+.papel{background:var(--papel);color:var(--n);background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='f'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.6' numOctaves='4'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -1.6 1.15'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23f)' opacity='.35'/%3E%3C/svg%3E")}
+.celdas{display:flex;flex-wrap:wrap;gap:4px}
+.celdas i{font:400 clamp(30px,5vw,78px)/1 "Anton";font-style:normal;text-transform:uppercase;background:var(--n);color:var(--b);padding:.08em .14em .02em;min-width:.9em;text-align:center}
+.celdas i:nth-child(3n){background:var(--r)}.celdas i:nth-child(4n+1){transform:rotate(-2deg)}.celdas i:nth-child(5n+2){transform:translateY(4px) rotate(1.5deg)}
+.cinta{position:absolute;width:110px;height:28px;background:#efe9c8b0;box-shadow:0 1px 2px #0003}
+/* portada */
+.escena{position:relative;min-height:100svh;display:grid;grid-template-rows:auto 1fr auto;overflow:hidden;background:radial-gradient(55% 40% at 50% 46%,#3b0b07 0,#120606 55%,var(--n) 80%)}
+.tira{position:relative;z-index:3;display:flex;justify-content:space-between;gap:12px;padding:14px clamp(16px,4vw,56px);font-size:clamp(12px,1.1vw,15px);text-transform:uppercase;letter-spacing:.1em;border-bottom:1px solid #ffffff22}
+.tira b{font-weight:400;color:#fff;text-shadow:var(--glow)}
+.palco{position:relative;display:grid;place-items:center;perspective:1100px;padding:0 clamp(8px,3vw,40px)}
+.logo{position:relative;width:min(1100px,94vw);aspect-ratio:749/338;transform-style:preserve-3d;animation:gira 9s ease-in-out infinite alternate}
+.logo img{position:absolute;inset:0;width:100%;height:100%;display:block;user-select:none}
+.logo .capa{filter:brightness(.38) saturate(1.4) hue-rotate(-8deg)}
+.logo .trozo{filter:drop-shadow(0 0 6px #ff3b1f) drop-shadow(0 0 22px #ff2a00aa);animation:rompe 1.6s cubic-bezier(.2,.9,.2,1) .5s both,titila 7s 2.2s infinite}
+.t1{clip-path:polygon(0 0,27% 0,24% 38%,29% 61%,22% 100%,0 100%);--x:-16px;--y:6px;--z:30px;--r:-5deg}
+.t2{clip-path:polygon(27% 0,52% 0,47% 44%,55% 70%,49% 100%,22% 100%,29% 61%,24% 38%);--x:-4px;--y:-9px;--z:60px;--r:3deg;animation-delay:.55s,2.8s!important}
+.t3{clip-path:polygon(52% 0,78% 0,73% 35%,80% 58%,75% 100%,49% 100%,55% 70%,47% 44%);--x:8px;--y:10px;--z:45px;--r:-2.5deg;animation-delay:.6s,3.5s!important}
+.t4{clip-path:polygon(78% 0,100% 0,100% 100%,75% 100%,80% 58%,73% 35%);--x:18px;--y:-4px;--z:25px;--r:6deg;animation-delay:.65s,4.1s!important}
+.grieta{position:absolute;inset:-4% 0;width:100%;height:108%;overflow:visible;transform:translateZ(70px);pointer-events:none;animation:aparece .3s .7s both}
+.grieta path{fill:none;stroke:#fff;stroke-width:2.2;filter:drop-shadow(0 0 3px #fff) drop-shadow(0 0 9px #ff4a2a)}
+.chispa{position:absolute;width:4px;height:4px;border-radius:50%;background:#fff;box-shadow:0 0 8px 2px #ffb070;left:var(--l);top:var(--t);transform:translateZ(80px);animation:salta 1.4s var(--d) infinite}
+.reflejo{position:absolute;left:50%;bottom:-2%;width:min(1100px,94vw);transform:translateX(-50%) scaleY(-.5);transform-origin:bottom;opacity:.25;filter:blur(5px);-webkit-mask:linear-gradient(#000,transparent 70%);mask:linear-gradient(#000,transparent 70%)}
+.barra{position:absolute;left:0;right:0;bottom:0;height:24%;background:linear-gradient(#1a0806,#060404);border-top:1px solid #5a1a10}
+.bajo{position:relative;z-index:3;display:flex;flex-wrap:wrap;align-items:end;justify-content:space-between;gap:18px;padding:0 clamp(16px,4vw,56px) clamp(22px,4svh,44px)}
+.kick{font:400 clamp(30px,3.6vw,60px)/1 "Pirata One";color:#fff;text-shadow:var(--glow)}
+.kick small{display:block;font:400 clamp(13px,1.1vw,16px) "Special Elite";letter-spacing:.12em;text-transform:uppercase;text-shadow:none;color:#d8d2c6;margin-top:10px}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:52px;padding:0 20px;font:400 18px "Anton";text-transform:uppercase;letter-spacing:.06em;text-decoration:none;color:var(--b);border:2px solid var(--b);margin:0 6px 6px 0}
+.btn.r{background:var(--r);border-color:var(--r)}
+.btn.neon{border-color:#fff;box-shadow:0 0 8px #fff,0 0 20px #ff2a1a,inset 0 0 10px #ffffff55}
+/* zine */
+.zine{position:relative;padding:clamp(56px,8vw,120px) clamp(16px,4vw,56px)}
+.hoja{position:relative;max-width:1180px;margin:auto;padding:clamp(26px,4vw,60px);transform:rotate(-.8deg);box-shadow:10px 14px 0 #000,0 30px 60px #0009;clip-path:polygon(0 1.5%,4% 0,9% 1%,15% .2%,22% 1.2%,30% 0,38% 1%,47% .3%,55% 1.3%,63% 0,72% 1%,80% .2%,88% 1.1%,95% 0,100% .8%,100% 100%,0 100%)}
+.hoja .cinta{top:-8px;left:8%;transform:rotate(-6deg)}.hoja .cinta+.cinta{left:auto;right:10%;transform:rotate(5deg)}
+.cols{display:grid;grid-template-columns:1fr 1.15fr;gap:clamp(22px,3.4vw,56px);margin-top:clamp(20px,3vw,40px)}
+.foto{position:relative;background:#111;border:3px solid var(--n);overflow:hidden;aspect-ratio:5/4}
+.foto img{width:100%;height:100%;object-fit:cover;filter:contrast(1.3)}
+.foto:after{content:"";position:absolute;inset:0;background:repeating-linear-gradient(90deg,#0000 0 21px,#0004 21px 23px),repeating-linear-gradient(#0000 0 21px,#0004 21px 23px);mix-blend-mode:multiply}
+.pie-foto{margin-top:8px;font-size:13px;text-transform:uppercase;letter-spacing:.06em}
+.lista{list-style:none;padding:0;border-top:3px solid var(--n)}
+.lista li{position:relative;display:grid;grid-template-columns:clamp(120px,12vw,170px) 1fr;gap:14px;align-items:center;padding:14px 0;border-bottom:2px dashed #0009;font-size:clamp(16px,1.4vw,20px)}
+.lista b{font:400 clamp(22px,2.1vw,32px)/1 "Anton";text-transform:uppercase;background:var(--n);color:var(--papel);padding:6px 10px 4px;justify-self:start}
+.lista .hoy b{background:var(--r)}
+.sello{position:absolute;right:0;top:50%;translate:0 -50%;rotate:-9deg;font:400 18px "Anton";letter-spacing:.08em;color:var(--r);border:3px solid var(--r);padding:2px 10px;opacity:.85}
+.garabato{font:400 clamp(18px,1.7vw,24px) "Permanent Marker";color:var(--r);margin-top:18px;rotate:-2deg}
+/* flyer */
+.cartel{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1fr);gap:clamp(24px,4vw,64px);align-items:center;padding:0 clamp(16px,4vw,56px) clamp(56px,8vw,120px);max-width:1290px;margin:auto}
+.flyer{background:#141212;border:clamp(10px,1.4vw,18px) solid var(--r);padding:clamp(10px,1.4vw,18px);rotate:1.2deg;box-shadow:12px 14px 0 #000}
+.flyer .celdas i{font-size:clamp(26px,3.2vw,50px);background:var(--b);color:var(--n)}.flyer .celdas i:nth-child(3n){background:var(--b)}
+.flyer .foto{margin:12px 0;border-color:var(--b);aspect-ratio:4/3}
+.flyer .foto img{filter:invert(1) contrast(1.4)}
+.etiqueta{position:relative;margin:-48px 0 14px auto;width:max-content;max-width:90%;background:var(--b);color:var(--r);font:400 clamp(22px,2.4vw,36px) "Anton";text-transform:uppercase;padding:6px 16px;rotate:-6deg}
+.flyer p{text-align:center;font:400 clamp(18px,1.8vw,26px) "Anton";letter-spacing:.06em;text-transform:uppercase}
+.texto h2{font:400 clamp(44px,5.4vw,96px)/.9 "Anton";text-transform:uppercase}
+.texto h2 em{font-style:normal;color:#fff;text-shadow:var(--glow)}
+.texto p{font-size:clamp(16px,1.4vw,20px);line-height:1.6;color:#cfc8bb;margin:18px 0 26px;max-width:34ch}
+/* llegar */
+.llegar{display:grid;grid-template-columns:1.2fr 1fr;gap:0;max-width:1290px;margin:0 auto clamp(56px,8vw,110px);padding:0 clamp(16px,4vw,56px)}
+.mapa{min-height:340px;background:#1a1818;border:3px solid var(--b);display:grid;place-items:center;color:#8d867b}
+.dato{padding:clamp(24px,3vw,44px);position:relative;rotate:1deg;margin:-14px 0 0 -10px;box-shadow:8px 10px 0 #000}
+.dato h3{font:400 clamp(34px,3.4vw,56px)/1 "Anton";text-transform:uppercase}
+.dato p{font-size:clamp(16px,1.4vw,20px);line-height:1.8;margin-top:14px}
+.dir{position:relative;display:inline-block}.dato .circulo{position:absolute;left:-16px;top:-10px;width:calc(100% + 32px);height:calc(100% + 20px);pointer-events:none}
+.dato .circulo path{fill:none;stroke:var(--r);stroke-width:3}
+.dock{display:none}
+.nota{position:fixed;left:12px;top:56px;z-index:60;background:var(--r);color:#fff;font:400 13px "Anton";letter-spacing:.06em;padding:5px 10px;text-transform:uppercase}
+@keyframes gira{from{transform:rotateX(12deg) rotateY(-16deg)}to{transform:rotateX(6deg) rotateY(12deg)}}
+@keyframes gira-c{from{transform:rotateX(10deg) rotateY(-9deg)}to{transform:rotateX(5deg) rotateY(7deg)}}
+@keyframes rompe{from{transform:none}to{transform:translate3d(var(--x),var(--y),var(--z)) rotate(var(--r))}}
+@keyframes titila{0%,90%,100%{opacity:1}91%{opacity:.25}92%{opacity:1}95%{opacity:.5}}
+@keyframes aparece{from{opacity:0}to{opacity:1}}
+@keyframes salta{0%{opacity:1;translate:0 0}100%{opacity:0;translate:var(--dx) 60px}}
+@media (max-width:760px){
+ .tira span:nth-child(2){display:none}
+ .logo,.reflejo{width:80vw}.logo{animation-name:gira-c}.celdas{gap:2px}.celdas i{font-size:6.6vw}.palco{padding-bottom:4svh}
+ .bajo .acciones{display:none}
+ .cols,.cartel,.llegar{grid-template-columns:1fr}
+ .lista li{grid-template-columns:1fr;gap:6px}.sello{top:18px;translate:0}
+ .dato{margin:-14px 6px 0}
+ .dock{display:grid;grid-template-columns:repeat(3,1fr);position:fixed;z-index:40;left:10px;right:10px;bottom:10px;gap:6px}
+ .dock a{display:grid;place-items:center;height:54px;font:400 17px "Anton";text-transform:uppercase;letter-spacing:.06em;color:#fff;text-decoration:none;background:#0d0b0bee;border:2px solid #fff;box-shadow:0 0 8px #fff,0 0 18px #ff2a1a}
+ .dock a:first-child{background:var(--r);border-color:var(--r);box-shadow:none}
+ body{padding-bottom:76px}
+}
+</style></head><body>
+<div class="grano"></div>
+<header class="escena">
+ <div class="tira"><span><b>●</b> Rock en vivo</span><span>Music &amp; Food</span><span>Pte. Perón 3330 · San Martín</span></div>
+ <div class="palco">
+  <div class="barra"></div>
+  <img class="reflejo" src="../img/logo-neon.webp" alt="">
+  <div class="logo" role="img" aria-label="Orange Bar">
+   <img class="capa" src="../img/logo-neon.webp" alt="" style="transform:translateZ(-36px)"><img class="capa" src="../img/logo-neon.webp" alt="" style="transform:translateZ(-27px)"><img class="capa" src="../img/logo-neon.webp" alt="" style="transform:translateZ(-18px)"><img class="capa" src="../img/logo-neon.webp" alt="" style="transform:translateZ(-9px)">
+   <img class="trozo t1" src="../img/logo-neon.webp" alt=""><img class="trozo t2" src="../img/logo-neon.webp" alt=""><img class="trozo t3" src="../img/logo-neon.webp" alt=""><img class="trozo t4" src="../img/logo-neon.webp" alt="">
+   <svg class="grieta" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M27 0 L24 38 L29 61 L22 100" vector-effect="non-scaling-stroke"/><path d="M52 0 L47 44 L55 70 L49 100" vector-effect="non-scaling-stroke"/><path d="M78 0 L73 35 L80 58 L75 100" vector-effect="non-scaling-stroke"/></svg>
+   <i class="chispa" style="--l:25%;--t:40%;--d:.2s;--dx:-30px"></i><i class="chispa" style="--l:50%;--t:52%;--d:.7s;--dx:20px"></i><i class="chispa" style="--l:76%;--t:36%;--d:1.1s;--dx:34px"></i><i class="chispa" style="--l:48%;--t:20%;--d:.4s;--dx:-14px"></i>
+  </div>
+ </div>
+ <div class="bajo"><div class="kick">Ruido, birra y rock en vivo<small>El lugar para escuchar rock en vivo en San Martín los jueves</small></div>
+  <div class="acciones"><a class="btn r" href="#agenda">Agenda</a><a class="btn neon" href="#">Reservar</a><a class="btn" href="#">La carta</a></div></div>
+</header>
+
+<section class="zine" id="agenda"><div class="hoja papel"><span class="cinta"></span><span class="cinta"></span>
+ <div class="celdas"><i>E</i><i>s</i><i>t</i><i>a</i>&nbsp;<i>s</i><i>e</i><i>m</i><i>a</i><i>n</i><i>a</i></div>
+ <div class="cols">
+  <div><div class="foto"><img src="../img/xerox-barra.webp" alt="El cartel de neón del bar, fotocopiado"></div><p class="pie-foto">Orange Bar · Pte. Perón 3330 · fotocopiá y pegá</p></div>
+  <div><ol class="lista">
+   <li><b>Miércoles</b><span>Miércoles de chicas — en vivo</span></li>
+   <li class="hoy"><b>Jueves</b><span>Rock en vivo — [banda]</span><span class="sello">Hoy</span></li>
+   <li><b>Viernes</b><span>Fiesta Agite — [tributo]</span></li>
+   <li><b>Sábado</b><span>[banda] + DJ</span></li>
+   <li><b>Domingo</b><span>Jam rock &amp; blues — venite y participá</span></li>
+  </ol><p class="garabato">→ la grilla completa, en el Instagram</p></div>
+ </div>
+</div></section>
+
+<section class="cartel">
+ <div class="flyer"><div class="celdas"><i>O</i><i>r</i><i>a</i><i>n</i><i>g</i><i>e</i>&nbsp;<i>B</i><i>a</i><i>r</i></div>
+  <div class="foto"><img src="../img/xerox-barra.webp" alt=""></div><div class="etiqueta">Rock en vivo</div><p>Music &amp; Food · San Martín</p></div>
+ <div class="texto"><h2>Reservá tu mesa <em>antes</em> de que arranque el ruido</h2><p>Escribinos por WhatsApp para reservar, o mirá la carta antes de venir.</p>
+  <a class="btn r" href="#">WhatsApp [número]</a><a class="btn" href="#">La carta</a><a class="btn" href="#">Instagram</a></div>
+</section>
+
+<section class="llegar"><div class="mapa">[ mapa ]</div>
+ <div class="dato papel"><h3>Cómo llegar</h3><p><span class="dir">Av. Presidente Perón 3330<svg class="circulo" viewBox="0 0 300 70" preserveAspectRatio="none"><path d="M10 38 C 14 8, 270 2, 292 30 C 300 58, 60 70, 14 52 C 0 44, 30 20, 80 14"/></svg></span><br>San Martín, Buenos Aires<br>Horarios: [a confirmar]<br>@orangebarsanmartin</p></div>
+</section>
+
+<nav class="dock"><a href="#agenda">Agenda</a><a href="#">Reservar</a><a href="#">Llegar</a></nav>
+<div class="nota">Boceto D · Punk en papel + neón 3D</div>
+</body></html>
